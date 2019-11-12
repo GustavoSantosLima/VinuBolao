@@ -5,7 +5,7 @@ const api = axios.create({
   headers: {
     Authorization:
       'Bearer ' +
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIsImlhdCI6MTU3MzUxNDMzNn0.NS_WmLFM5w00afdTiJaraijYtDm644n_YTwc5bMMrH4',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIsImlhdCI6MTU3MzU4ODc5Mn0.jsV-zhx_MGOmU6SiqnuDb3CVii30nl37NGG_zelySGg',
   },
 });
 

@@ -3,21 +3,40 @@ body {
   padding: 0;
   color: #636b6f;
   background-color: #ededed;
-  font-family: Raleway, sans-serif;
 }
 
-body .content {
-  width: 1140px;
-  margin: 0 auto;
-}
-
-body .content .box {
+body .container .box {
   padding: 15px;
   margin: 15px 0;
   background-color: white;
   box-shadow: 0 0 15px #ccc;
 }
 
-body .content .box .title {
+body .container .box .title {
   font-weight: 400;
+}
+
+body .container .box .thead {
+  color: white;
+  background-color: #636b6f;
+}
+
+body .container .box .box-legend {
+  display: flex;
+  align-items: center;
+}
+
+body .container .box .box-legend .legend {
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+}
+
+body .container .box .box-legend .legend.exato {
+  background-color: rgba(11, 130, 11, 0.6);
+}
+
+body .container .box .box-legend .legend.vencedor {
+  margin-left: 5px;
+  background-color: rgba(150, 11, 11, 0.7);
 }
