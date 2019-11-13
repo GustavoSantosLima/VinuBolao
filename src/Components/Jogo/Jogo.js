@@ -7,8 +7,8 @@ function Jogo() {
 
   useEffect(() => {
     async function getBolao() {
-      const { data } = await api.get('/jogos');
-      setJogos([data[0], data[1], data[2], data[3], data[4]]);
+      const { data } = await api.get('/jogos/campeonato/22/2');
+      setJogos(data);
     }
 
     getBolao();

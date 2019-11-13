@@ -7,8 +7,8 @@ function Home() {
 
   useEffect(() => {
     async function getBolao() {
-      const { data } = await api.get('/bolaos');
-      setBolao(data);
+      const { data: pagination } = await api.get('/bolaos');
+      setBolao(pagination.data);
     }
 
     getBolao();

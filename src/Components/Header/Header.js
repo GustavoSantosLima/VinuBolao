@@ -1,14 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import { logout } from '../../services/auth';
 
 import './Header.css';
 
-function Header() {
+function Header({ history }) {
+  function handleSignOut() {
+    logout();
+    history.push('/');
+  }
+
   return (
     <header className="header">
       <ul className="menu">
         <li className="menu-item">
-          <Link className="menu-link" to="/">
+          <Link className="menu-link" to="/bolao">
             Home
           </Link>
         </li>
@@ -18,12 +24,12 @@ function Header() {
           </Link>
         </li>
         <li className="menu-item">
-          <Link className="menu-link" to="/jogo">
+          <Link className="menu-link" to="/jogos">
             Jogo
           </Link>
         </li>
         <li className="menu-item">
-          <Link className="menu-link" to="/palpite">
+          <Link className="menu-link" to="/palpites">
             Palpite
           </Link>
         </li>
@@ -32,9 +38,14 @@ function Header() {
             Regulamento
           </Link>
         </li>
+        <li className="menu-item exit">
+          <div className="menu-link" onClick={() => handleSignOut()}>
+            Sair
+          </div>
+        </li>
       </ul>
     </header>
   );
 }
 
-export default Header;
+export default withRouter(Header);
