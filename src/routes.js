@@ -4,10 +4,10 @@ import { isAuthenticated } from './services/auth';
 
 import Login from './Components/Login/Login';
 import Home from './Components/Home/Home';
-import Jogo from './Components/Jogo/Jogo';
-import Palpite from './Components/Palpite/Palpite';
-import Regulamento from './Components/Regulamento/Regulamento';
-import Classificacao from './Components/Classificacao/Classificacao';
+import Match from './Components/Match/Match';
+import Guess from './Components/Guess/Guess';
+import Ranking from './Components/Ranking/Ranking';
+import Regulation from './Components/Regulation/Regulation';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -28,10 +28,10 @@ export default function Routes() {
       <Switch>
         <Route exact path="/" component={Login} />
         <PrivateRoute exact path="/bolao" component={Home} />
-        <PrivateRoute exact path="/jogos" component={Jogo} />
-        <PrivateRoute exact path="/palpites" component={Palpite} />
-        <PrivateRoute exact path="/regulamento" component={Regulamento} />
-        <PrivateRoute exact path="/classificacao" component={Classificacao} />
+        <PrivateRoute exact path="/jogos" component={Match} />
+        <PrivateRoute exact path="/palpites" component={Guess} />
+        <PrivateRoute exact path="/regulamento" component={Regulation} />
+        <PrivateRoute exact path="/classificacao" component={Ranking} />
         <Route path="*" component={() => <h1>Page not found</h1>} />
       </Switch>
     </BrowserRouter>

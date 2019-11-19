@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react';
 import Header from '../Header/Header';
 import api from '../../services/api';
 
-function Jogo() {
-  const [jogos, setJogos] = useState([]);
+function Match() {
+  const [matches, setMatches] = useState([]);
 
   useEffect(() => {
-    async function getBolao() {
-      const { data } = await api.get('/jogos/campeonato/22/2');
-      setJogos(data);
+    async function getMatches() {
+      const { data } = await api.get('/matches/championship/22/2');
+      setMatches(data);
     }
 
-    getBolao();
+    getMatches();
   }, []);
 
   return (
@@ -28,9 +28,9 @@ function Jogo() {
         </div>
 
         <div className="box">
-          {jogos.map((jogo, key) => (
+          {matches.map((match, key) => (
             <div key={key}>
-              {jogo.mandante.nome} x {jogo.visitante.nome}
+              {match.home.name} x {match.visitor.name}
             </div>
           ))}
         </div>
@@ -39,4 +39,4 @@ function Jogo() {
   );
 }
 
-export default Jogo;
+export default Match;

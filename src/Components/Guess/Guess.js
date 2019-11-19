@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react';
 import Header from '../Header/Header';
 import api from '../../services/api';
 
-function Palpite() {
-  const [jogos, setJogos] = useState([]);
+function Guess() {
+  const [guesses, setGuesses] = useState([]);
 
   useEffect(() => {
-    async function getBolao() {
+    async function getGuesses() {
       const { data } = await api.get('/jogos/campeonato/22/1');
-      setJogos(data);
+      setGuesses(data);
     }
 
-    getBolao();
+    getGuesses();
   }, []);
 
   return (
@@ -29,9 +29,9 @@ function Palpite() {
         </div>
 
         <div className="box">
-          {jogos.map((jogo, key) => (
+          {guesses.map((guess, key) => (
             <div key={key}>
-              {jogo.mandante.nome} x {jogo.visitante.nome}
+              {guess.home.name} x {guess.visitor.name}
             </div>
           ))}
         </div>
@@ -40,4 +40,4 @@ function Palpite() {
   );
 }
 
-export default Palpite;
+export default Guess;

@@ -1,0 +1,9 @@
+#ranking .box .table td,
+#ranking .box .table th {
+  padding: 7px;
+  text-align: center;
+}
+
+#ranking .box .table .table-name {
+  text-align: start;
+}

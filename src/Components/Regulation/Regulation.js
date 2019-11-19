@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../Header/Header';
 
-function Regulamento() {
+function Regulation() {
   return (
     <>
       <Header />
@@ -108,4 +108,4 @@ function Regulamento() {
   );
 }
 
-export default Regulamento;
+export default Regulation;

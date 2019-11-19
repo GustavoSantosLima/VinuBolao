@@ -2,25 +2,25 @@ import React, { useState, useEffect } from 'react';
 import Header from '../Header/Header';
 import api from '../../services/api';
 
-import './Classificacao.css';
+import './Ranking.css';
 
-function Classificacao() {
-  const [classificacao, setClassificacao] = useState([]);
+function Ranking() {
+  const [ranking, setRanking] = useState([]);
 
   useEffect(() => {
-    async function getBolao() {
-      const { data } = await api.get('/classificacao/22/1');
-      setClassificacao(data);
+    async function getRanking() {
+      const { data } = await api.get('/ranking/22/1');
+      setRanking(data);
     }
 
-    getBolao();
+    getRanking();
   }, []);
 
   return (
     <>
       <Header />
 
-      <main id="classificacao" className="container">
+      <main id="ranking" className="container">
         <div className="box">
           <h1 className="title">Classificação</h1>
           <p>
@@ -42,18 +42,18 @@ function Classificacao() {
               </tr>
             </thead>
             <tbody>
-              {classificacao.map((item, key) => (
+              {ranking.map((item, key) => (
                 <tr key={key}>
                   <td>{key + 1}º</td>
                   <td className="table-name">
                     <strong>{item.name}</strong>
                   </td>
                   <td>
-                    <strong>{item.pontosganhos}</strong>
+                    <strong>{item.points}</strong>
                   </td>
-                  <td>{item.placarexato}</td>
-                  <td>{item.placarvencedor}</td>
-                  <td>{item.pontosganhos - classificacao[0].pontosganhos}</td>
+                  <td>{item.exactscores}</td>
+                  <td>{item.winningscores}</td>
+                  <td>{item.points - ranking[0].points}</td>
                 </tr>
               ))}
             </tbody>
@@ -78,4 +78,4 @@ function Classificacao() {
     </>
   );
 }
-export default Classificacao;
+export default Ranking;
