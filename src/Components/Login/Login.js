@@ -7,7 +7,7 @@ import './Login.css';
 
 class SignIn extends Component {
   state = {
-    email: '',
+    username: '',
     password: '',
     error: '',
   };
@@ -20,15 +20,15 @@ class SignIn extends Component {
 
   handleSignIn = async e => {
     e.preventDefault();
-    const { email, password } = this.state;
+    const { username, password } = this.state;
 
-    if (!email || !password) {
+    if (!username || !password) {
       this.setState({ error: 'Preencha e-mail e senha para continuar!' });
     } else {
       try {
-        const response = await api.post('/authenticate', { email, password });
+        const res = await api.post('/authenticate', { username, password });
 
-        login(response.data.token);
+        login(res.data.token);
 
         this.props.history.push('/bolao');
       } catch (err) {
@@ -46,10 +46,10 @@ class SignIn extends Component {
           {this.state.error && <p>{this.state.error}</p>}
 
           <input
-            type="email"
+            type="text"
             className="input-login"
-            placeholder="Digite seu e-mail..."
-            onChange={e => this.setState({ email: e.target.value })}
+            placeholder="Digite seu usuário..."
+            onChange={e => this.setState({ username: e.target.value })}
           />
 
           <input

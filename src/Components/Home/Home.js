@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { format, parseISO } from 'date-fns';
 import Header from '../Header/Header';
 import api from '../../services/api';
 
 function Home() {
-  const [bolaos, setBolao] = useState([]);
+  const [pools, setPool] = useState([]);
 
   useEffect(() => {
-    async function getBolao() {
-      const { data: pagination } = await api.get('/bolaos');
-      setBolao(pagination.data);
+    async function getPool() {
+      const { data: pagination } = await api.get('/pools');
+      setPool(pagination.data);
     }
 
-    getBolao();
+    getPool();
   }, []);
 
   return (
@@ -24,43 +25,43 @@ function Home() {
           <p>Veja a lista de bolões que você participa!</p>
         </div>
 
-        {bolaos.map(bolao => (
-          <div key={bolao.id} className="box">
+        {pools.map(pool => (
+          <div key={pool.id} className="box">
             <table className="table table-bordered">
               <thead>
                 <tr>
                   <th colSpan="2">
-                    <strong>{bolao.nome}</strong>
+                    <strong>{pool.name}</strong>
                   </th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <th scope="row">Nome</th>
-                  <td>{bolao.nome}</td>
+                  <td>{pool.name}</td>
                 </tr>
                 <tr>
                   <th scope="row">Administrador</th>
-                  <td>{bolao.user.name}</td>
+                  <td>{pool.user.name}</td>
                 </tr>
                 <tr>
                   <th scope="row">Campeonato</th>
                   <td>
-                    {bolao.campeonato.nome} - {bolao.campeonato.temporada} -
-                    Série {bolao.campeonato.serie}
+                    {pool.championship.name} - {pool.championship.season} -
+                    Série {pool.championship.serie}
                   </td>
                 </tr>
                 <tr>
                   <th scope="row">Data Inicial</th>
-                  <td>{bolao.inicio}</td>
+                  <td>{format(parseISO(pool.starts), 'dd/MM/yyyy')}</td>
                 </tr>
                 <tr>
                   <th scope="row">Descrição</th>
-                  <td dangerouslySetInnerHTML={{ __html: bolao.descricao }} />
+                  <td dangerouslySetInnerHTML={{ __html: pool.description }} />
                 </tr>
                 <tr>
                   <th scope="row">Ativo</th>
-                  <td>{bolao.ativo ? 'SIM' : 'NÃO'}</td>
+                  <td>{pool.ativo ? 'SIM' : 'NÃO'}</td>
                 </tr>
               </tbody>
             </table>

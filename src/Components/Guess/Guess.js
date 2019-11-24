@@ -7,7 +7,7 @@ function Guess() {
 
   useEffect(() => {
     async function getGuesses() {
-      const { data } = await api.get('/jogos/campeonato/22/1');
+      const { data } = await api.get('/matches/championship/22/2');
       setGuesses(data);
     }
 
